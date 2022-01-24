@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        function personConstructor(name, age) {
+            this.name = name;
+            this.age = age;
+            this.greet = function() {
+                console.log("Hello my name is " + this.name + " and I am " + this.age + " years old!");
+            }
+        }
+        // create the 'steve' instance, run greet
+        var steve = new personConstructor("Steve", 27);
+        console.log(steve)
+        steve.greet()
+
+        // create the 'anika' instance, run greet. note that it is different.
+        var anika = new personConstructor("Anika", 33);
+        anika.greet();
+    </script>
+    <title>JS Intro2</title>
+</head>
+<body>
+    
+</body>
+</html>

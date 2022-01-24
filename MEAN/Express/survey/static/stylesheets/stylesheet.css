@@ -1,0 +1,28 @@
+body{
+  background-color: cornflowerblue;
+}
+
+section{
+  margin: 5vh;
+  border: 10px solid black;
+  height: 90vh;
+  background-color: cadetblue;
+  position: relative;
+}
+
+.container{
+  border: 5px solid white;
+  border-radius: 5px;
+  width: 150vh;
+  height: 60vh;
+  background-color: cornflowerblue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.form-group{
+  margin-bottom: 15px;
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NinjaIII</title>
+</head>
+<body>
+    <script>
+        class Ninja{
+            constructor(name){
+                this.name=name;
+                this.health=100;
+                this.strength=3;
+                this.speed=3
+            }
+
+            sayName(){
+                console.log(`My name is ${this.name}, and I am a Ninja`)
+            }
+
+            showStats(){
+                console.log(`Ninja ${this.name}'s stats:\n\tHealth: ${this.health}\n\tStrength: ${this.strength}\n\tSpeed: ${this.speed}`)
+            }
+
+            drinkSake(){
+                this.health+=10
+            }
+        }
+
+        class Sensai extends Ninja{
+            constructor(name) {
+                super(name)
+                this.health=200
+                this.speed=10;
+                this.strength=10;
+                this.wisdom=10
+            }
+
+            speakWisdom(){
+                super.drinkSake();
+                console.log("I am drunk")
+            }
+        }
+
+        const n1 = new Ninja("Angelo")
+        console.log(n1)
+        console.log(n1.name)
+        n1.sayName()
+        n1.showStats()
+        n1.drinkSake()
+        n1.showStats()
+        const s1 = new Sensai("Wardo")
+        console.log(s1)
+        console.log(s1.name)
+        s1.sayName()
+        s1.showStats()
+        s1.drinkSake()
+        s1.speakWisdom()
+        s1.showStats()
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+class Ninja{
+    ninjaConstructor(name){
+        this.name=name
+    }
+
+    sayName(){
+        console.log(n1.name)
+    }
+}
+
+const n1 = new Ninja("Angelo")
+console.log(n1)
+console.log(n1.name)
+n1.sayName()

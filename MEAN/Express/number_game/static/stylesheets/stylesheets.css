@@ -1,0 +1,57 @@
+body{
+  background-color: grey;
+}
+
+section{
+  margin: 5vh;
+  border: 10px solid black;
+  height: 90vh;
+  background-color: cadetblue;
+  position: relative;
+}
+
+.container{
+  border: 5px solid white;
+  border-radius: 5px;
+  width: 80vh;
+  height: 50vh;
+  background-color: cornflowerblue;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.block{
+	width: 90px;
+	height: 90px;
+	margin-bottom: 10px;
+	color: white;
+  position: inherit;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#guessbar{
+  width: 265px;
+}
+
+.red{
+  background-color: red;
+}
+
+.green{
+  background-color: green;
+}
+
+#hidden{
+  display: none;
+}
+
+#show{
+  margin-top: 5px;
+}
+

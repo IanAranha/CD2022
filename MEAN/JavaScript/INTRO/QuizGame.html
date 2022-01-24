@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script> -->
+    <script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+    <title>Quiz Game</title>
+    <style>
+        body{
+            background-color: #7ff0ff;
+        }
+        
+        .container-fluid{
+            border: 5px solid black;
+            padding: 5%;
+        }
+
+        .head-box a{
+            color: aliceblue;
+        }
+
+        .head-box{
+            color: aliceblue;
+            text-align: center;
+            width: 200px;
+            padding: 5%;
+            border: 3px solid blue;
+        }
+
+        .category{
+            border: 4px solid red;
+            text-align: center;
+            align-items: center;
+        }
+        
+        .flip-card{
+            width: 230px;
+            height: 100px;
+            margin: 10px;
+            position: relative;
+            cursor: pointer;
+            border: 2px solid black;
+            border-radius: 8px;
+            overflow-y: auto;
+        }
+        
+        .panel{
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid rounded">
+        <div class="d-flex justify-content-around text-white">
+            <div class="p-2 bg-info head-box"><a href="">Continue with new questions</a></div>
+            <div class="p-2 bg-info head-box"><h2>Trivia Night</h2></div>
+            <div class="p-2 bg-info head-box"><h5>Current Score:</h5><span id="score">0</span></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 category">
+                <div class="flip-card rounded" id="cate1"></div>
+                <div class="flip-card rounded">
+                    <div class="flip">100</div>
+                    <div id="100-1"></div>
+                </div>
+                <div class="flip-card rounded">
+                    <div class="flip">200</div>
+                    <div id="200-1"></div>
+                </div>
+                <div class="flip-card rounded">
+                    <div class="flip">300</div>
+                    <div id="300-1"></div>
+                </div>
+            </div>
+          </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <script>
+        $(document).ready(function(){
+            var score = 0
+            $.get("https://opentdb.com/api.php?amount=10&type=multiple", function(data){
+                htmlString1="<h5>"+data.results[0].category+"</h5>"
+                $("#cate1").html(htmlString1)
+                htmlString1Question="<h6>"+data.results[0].question+"</h6>"
+                $(".flip").click(function(){
+                    $(this).hide();
+                    $("#100-1").html(htmlString1Question)
+                    var answers =[]
+                    var correct = data.results[0].correct_answer
+                    answers.push(correct)
+                    for(var i=0; i<data.results[0].incorrect_answers.length; i++){
+                        answers.push(data.results[0].incorrect_answers[i])
+                    }
+                    var newAnswers = [];
+                    while (answers.length) {
+                        var randomIndex = Math.floor(Math.random() * answers.length),
+                        element = answers.splice(randomIndex, 1)
+                        newAnswers.push(element[0]);       
+                    }   
+                    console.log(newAnswers)
+                    var answersString1=`<div> <form class="form-check">`
+                    for(var i=0; i<newAnswers.length;i++){
+                        console.log(newAnswers);
+                        answersString1+=`<input type="radio" value="${newAnswers[i]}"> <label for="${newAnswers[i]}">${newAnswers[i]}</label><br>`
+                    }
+                    answersString1+=`</form></div>`
+                    $("#100-1").append(answersString1);
+                    $("#100-1").slideDown()
+                    $('input:radio').change(function(e){
+                    var value = $("form input[type='radio']:checked").val();
+                    if (value == correct){
+                        alert("Correct")
+                        score += 100
+                        $("#score").text(score)
+                    } else {
+                        alert("Wrong")
+                    }
+                    e.preventDefault();
+                    });
+                })
+
+                htmlString2="<h2>"+data.results[1].category+"</h2>"
+                $("#cate2").html(htmlString2)
+
+                htmlString3="<h2>"+data.results[2].category+"</h2>"
+                $("#cate3").html(htmlString3)
+
+            })
+        })
+    </script>
+</body>
+</html>
+

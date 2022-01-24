@@ -1,0 +1,91 @@
+body{
+    background-color: skyblue;
+}
+
+.container{
+    background-color: seashell;
+    width: 850px;
+    height: 550px;
+    padding: 10px;
+    border: 4px solid rebeccapurple;
+    border-radius: 3%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+a{
+    color: seashell;
+}
+
+.box{
+    width: 220px;
+    height: 220px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10%;
+
+}
+
+#box1{
+    background-color: rebeccapurple;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:bolder;
+    font-size: 32px;
+}
+
+#box2{
+    background-color: rgb(51, 124, 153);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:bolder;
+    font-size: 32px;
+}
+
+h2{
+    font-size: xx-large;
+}
+
+#cars{
+    background-color: slategray;
+}
+.cars_container
+{
+    border: 3px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    background-color: dodgerblue;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    padding: 5%;
+}
+
+.cars_container > div{
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+    border-radius: 5px;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+img{
+    width: 250px;
+}
+
+.header{
+    margin: auto;
+    border: 2px solid green;
+    text-align: center;
+    font-size: 28px;
+}

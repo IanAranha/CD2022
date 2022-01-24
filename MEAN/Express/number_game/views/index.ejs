@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets.css">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    
+    <title>Guessing Game</title>
+</head>
+<body>
+    <section>
+        <div class="container p-3 my-3 bg-dark text-white">
+            <h2>COUNTER</h2>
+            <p>I am thinking of a number between 1 and 100</p>
+            <p>Take a guess!</p>
+            <div class="block <%=context.status%>">
+                <p><%=context.msg%></p>
+                <form action="/reset" method="post">
+                    <button type="button submit" class="btn btn-danger btn-sm" id="<%=context.showForm%>">RESET</button>
+                </form>
+            </div>
+            <br>
+            <br>
+            <br>
+            <form action="/guess" method="post">
+                <input id ="guessbar" placeholder="Enter a number between 1 and 100" type="text" name="guess"><br>
+                <br>
+                <button type="button submit" class="btn btn-primary">GUESS</button>
+            </form>
+        </div>
+    </section>
+</body>
+</html> 

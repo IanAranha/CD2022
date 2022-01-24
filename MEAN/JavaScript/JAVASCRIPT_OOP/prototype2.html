@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Cat(catName) {
+            var name = catName;
+            this.getName = function() {
+            return name;
+            };
+        }
+
+
+        //adding a method to the cat prototype
+        Cat.prototype.sayHi = function() {
+            console.log('meow');
+        };
+
+
+        //adding properties to the cat prototype
+        Cat.prototype.numLegs = 4;
+
+        //Creating instances of Cat object
+        var muffin = new Cat("muffin");
+        var biscuit = new Cat('biscuit');
+
+        //checking to see
+        console.log(muffin, biscuit);
+
+
+        //we access prototype properties the same way as we would access 'own' properties
+        muffin.sayHi();
+        biscuit.sayHi();
+        muffin.getName()
+        biscuit.getName()
+        console.log(muffin.numLegs);
+
+        // // we may change an instance's attributes rather than keeping the value set by prototype
+        muffin.numLegs = 3;
+        
+        // poor mutant cats: muffin.__proto__.numLegs ++;
+        // doing this to muffin will cause all the cats to have 5 legs, but muffin will still have 3 legs
+
+    </script>
+</body>
+</html>

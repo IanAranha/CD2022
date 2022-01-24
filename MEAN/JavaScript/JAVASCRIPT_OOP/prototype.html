@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototype</title>
+</head>
+<body>
+    <script>
+
+        var MyObjConstructor = function(name) {
+            var myPrivateVar = "Hello"; // just to show that it is difficult to see this private var
+
+            this.name = name; // but you can see the name!
+            this.method = function() {
+                console.log( "I am a method");
+            };
+        }
+
+        var obj1 = new MyObjConstructor('object1');
+        var obj2 = new MyObjConstructor('object2');
+        console.log(obj1);
+
+        obj1.newProperty = "newPropertyHere. I can actually add anything!!";
+
+        obj1.__proto__.anotherProperty = "anotherProperty! This is added to the prototype. Can be shared by many instannces.";
+
+        
+        
+        //code below will show "anotherProperty! this is added to........................."
+        console.log(obj1.anotherProperty); 
+
+        
+        //Code below will show "newProperty. I can actually add anything!!"
+        console.log(obj1.newProperty);
+
+
+        //Code below will show the same output as line 32 above. sharing the property as it is now in prototype.
+        console.log(obj2.anotherProperty)
+
+        //This will show undefined because we havent established newProperty for obj2.
+        console.log(obj2.newProperty)
+
+    </script>
+</body>
+</html>
