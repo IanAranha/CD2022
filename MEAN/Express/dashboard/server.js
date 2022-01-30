@@ -30,13 +30,18 @@ app.use(bp.urlencoded({ extended: true }))
 app.set('views', path.join(__dirname, '/views'))
 app.set('view engine', 'ejs')
 
-// Set up home route
+// Set up home route.
+// This also READS the DB and pulls all registered divers and posts them on the front page.
 app.get('/', function (req, res) {
   console.log('Hit home route')
   Diver.find()
     .then(data => res.render('index', { divers: data }))
     .catch(err => res.json(err))
 })
+
+// CREATE - The next two routes create a new diver to be added to the DB.
+// The first get route opens the page.
+// The second post route accepts data and posts to the DB.
 
 app.get('/divers/new', function (req, res) {
   console.log('Hit create new divers route')
@@ -58,23 +63,11 @@ app.post('/divers', function (req, res) {
   res.redirect('/')
 })
 
-// delete a certain record
-app.get('/destroy/:id', function (req, res) {
-  console.log('Hit delete route.')
-  console.log('xxxxx')
-  console.log(req.params.id)
-  console.log('Ian is King')
-  Diver.findByIdAndRemove(req.params.id, (err, doc) => {
-    if (!err) {
-      console.log('Deleted record')
-      res.redirect('/')
-    } else {
-      console.log('Delete failed' + err)
-    }
-  })
-})
+// The next two route UPDATES a single DB record by searching for it using the unique ID.
+// The first get route gets the record and populates the same form from the 'create diver' with the values...allowing operator to update.
+// The second post route accepts the data and posts it to the DB overwriting the information.
 
-// show one report to get it to edit.
+// Get the data and post to front
 app.get('/edit/:id', function (req, res) {
   console.log('Hit show one route')
   const id = req.params.id
@@ -88,7 +81,7 @@ app.get('/edit/:id', function (req, res) {
     .catch(err => res.json(err))
 })
 
-// Update selected record
+// Update selected record with posted data.
 app.post('/update/:id', function (req, res) {
   console.log('Hit the update route')
   const id = req.params.id
@@ -105,6 +98,22 @@ app.post('/update/:id', function (req, res) {
     .then(saveResult => res.redirect('/'))
     .catch(err => res.json(err))
 })
+
+// DESTROY a certain record after searching for it in the DB.
+app.get('/destroy/:id', function (req, res) {
+  console.log('Hit delete route.')
+  console.log(req.params.id)
+  Diver.findByIdAndRemove(req.params.id, (err, doc) => {
+    if (!err) {
+      console.log('Deleted record')
+      res.redirect('/')
+    } else {
+      console.log('Delete failed' + err)
+    }
+  })
+})
+
+// Standard navigation button to either UPDATE or CREATE and return to home page.
 
 app.get('/return', function (req, res) {
   console.log('Return to home page')
