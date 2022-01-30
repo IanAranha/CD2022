@@ -15,16 +15,17 @@
 <body>
   <section id='sectional'>
     <div class="container p-3 my-3 bg-dark text-white">
-      <h1>CREATE A NEW DIVER.</h1>
-      <form action="/divers" method='post'>
+      <h1>Update info on <%= diver.diverName %>!</h1>
+      <br>
+      <form action="/update/<%= diver.id%>" method='post'>
         <div class="form-group">
           <label for="diverName">Diver Name:</label><br/>
-          <input type="text" class="form-control" name="diverName" placeholder="Enter diver's full name">
+          <input type="text" class="form-control" name="diverName" value="<%= diver.diverName %>">
         </div>
         <br>
         <div class="form-group">
           <label for="diverLocation">Diver Location:</label><br/>
-          <input type="text" class="form-control" name="diverLocation" placeholder="Enter diver's current location">
+          <input type="text" class="form-control" name="diverLocation" value="<%= diver.diverLocation %>">
         </div>
         <br>
         <div class="form-group">
@@ -40,15 +41,15 @@
         <br>
         <div class="form-group">
           <label for="diverAge">Diver Age:</label><br/>
-          <input type="number" class="form-control" name="diverAge" placeholder="Enter diver's age">
+          <input type="number" class="form-control" name="diverAge" value="<%= diver.diverAge %>"">
         </div>
         <br>
         <div class="form-group">
           <label for="comment">Comments:</label><br/>
-          <textarea name="comment" id="comment" cols="90" rows="4"></textarea>
+          <textarea name="comment" id="comment" cols="90" rows="4" value="<%= diver.comment %>"></textarea>
         </div>
         <br>
-        <button type="button submit" class="btn btn-primary">CREATE DIVER</button>
+        <button type="button submit" class="btn btn-primary">Update Diver Info</button>
       </form>
       <br>
       <form action="/return" method="get">

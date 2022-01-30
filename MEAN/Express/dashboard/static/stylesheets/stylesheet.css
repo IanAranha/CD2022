@@ -2,6 +2,6 @@ body{
   background-color: skyblue;
 }
 
-td{
+th, td{
   color: whitesmoke
 }

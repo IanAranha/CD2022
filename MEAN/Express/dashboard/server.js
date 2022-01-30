@@ -74,6 +74,38 @@ app.get('/destroy/:id', function (req, res) {
   })
 })
 
+// show one report to get it to edit.
+app.get('/edit/:id', function (req, res) {
+  console.log('Hit show one route')
+  const id = req.params.id
+  console.log(id)
+  console.log(typeof id)
+  Diver.findOne({ _id: id })
+    .then(diver => {
+      console.log(diver)
+      res.render('edit', { diver: diver })
+    })
+    .catch(err => res.json(err))
+})
+
+// Update selected record
+app.post('/update/:id', function (req, res) {
+  console.log('Hit the update route')
+  const id = req.params.id
+  console.log(id)
+  Diver.findOne({ _id: id })
+    .then(diver => {
+      diver.diverName = req.body.diverName
+      diver.diverLocation = req.body.diverLocation
+      diver.diverSkillLevel = req.body.diverSkillLevel
+      diver.diverAge = req.body.diverAge
+      diver.comment = req.body.comment
+      return diver.save()
+    })
+    .then(saveResult => res.redirect('/'))
+    .catch(err => res.json(err))
+})
+
 app.get('/return', function (req, res) {
   console.log('Return to home page')
   res.redirect('/')

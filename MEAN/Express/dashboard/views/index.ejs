@@ -39,7 +39,12 @@
             <td><%= divers[x].comment %></td>
             <td>
               <form action="/destroy/<%= divers[x]._id %>" method="get">
-                <button type="button submit" class="btn btn-danger">DELETE</button>
+                <button type="button submit" class="btn btn-danger btn-sm">DELETE</button>
+              </form>
+            </td>
+            <td>
+              <form action="/edit/<%= divers[x]._id %>" method="get">
+                <button type="button submit" class="btn btn-info btn-sm">EDIT</button>
               </form>
             </td>
           </tr>
